@@ -17,22 +17,12 @@ use App\Http\Controllers\CursoController;
 */
 
 Route::get('/', HomeController::class);
-
-// Primera ruta 
-// Se coloca en un array para hacer uso del metodo index 
-Route::get('cursos', [CursoController::class, 'index']);
-
-Route::get('cursos/create', [CursoController::class, 'create']);
-
-// enviar datos por la url
-Route::get('cursos/{curso}', [CursoController::class, 'show']);
-
-// Si se quieren enviar más de dos parametros por medio de la url se debe denotar la ultima variable con ? al final como se muestra acontinuacion 
-// Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
-
-//     if ($categoria) {
-//         return "Hola bienvenido al curso $curso de la categoria $categoria";
-//     } else {
-//         "Bienvenido al curso: $curso";
-//     }
-// });
+// Apartir de laravel 9 se pueden agrupar las rutas que tengan el mismo controlador
+Route::controller(CursoController::class)->group(function () {
+    // Primera ruta 
+    // Se coloca en un array para hacer uso del metodo index 
+    Route::get('cursos', [CursoController::class, 'index']);
+    Route::get('cursos/create', [CursoController::class, 'create']);
+    // enviar datos por la url
+    Route::get('cursos/{curso}', [CursoController::class, 'show']);
+});
