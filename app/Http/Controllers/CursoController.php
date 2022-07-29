@@ -8,7 +8,7 @@ class CursoController extends Controller
 {
     public function index()
     {
-        return view('cursos.create');
+        return view('cursos.index');
     }
     public function create()
     {
