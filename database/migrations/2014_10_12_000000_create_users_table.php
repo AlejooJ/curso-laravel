@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create('users', function (Blueprint $table) { //Crear tabla users
+            $table->id(); // int Unsigned Increment
+            $table->string('name'); // varchar 255
+            $table->string('email')->unique(); // str 255 Valor unico 
+            $table->timestamp('email_verified_at')->nullable(); // Verificación de correo, permite null 
+            $table->string('password'); // str 255 
+            $table->rememberToken(); // str 255 
+            $table->timestamps(); //created_at update_at
         });
     }
 
